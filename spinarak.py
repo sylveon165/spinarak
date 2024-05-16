@@ -1,4 +1,4 @@
-import chromedriver_autoinstaller, os, random, smtplib, time
+import chromedriver_autoinstaller, os, uuid, random, smtplib, time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from email.mime.text import MIMEText
@@ -120,22 +120,24 @@ def create_booking(day_of_month, num_of_guests, location):
         #driver.save_screenshot('./pokemon-cafe.png')
         if available:
             print("Slot(s) AVAILABLE!")
-            filename = 'pokemon-cafe-slot-found.png'
+            filename = 'pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'
             # Delete previously-stored screenshot if found
             #if os.path.isfile(filename):
             #    print(filename + ' exists, deleting...')
             #    os.remove(filename)
-            driver.save_screenshot(filename)
+            #driver.save_screenshot(filename)
             # TODO: send email & text with screenshot if slots detected
             #send_email_notification(available_slots)	
         else:
             print("No available slots found :(")
-            filename = 'pokemon-cafe-no-slot-found.png'
+            filename = 'pokemon-cafe-no-dice' + str(uuid.uuid4().hex) + '.png'
             # Delete previously-stored screenshot if found
             #if os.path.isfile(filename):
             #    print(filename + ' exists, deleting...')
             #    os.remove(filename)
-            driver.save_screenshot(filename)
+            #driver.save_screenshot(filename)
+        
+        driver.save_screenshot(filename)
             
         driver.quit()
     except NoSuchElementException:
