@@ -42,15 +42,11 @@ def create_booking(day_of_month, num_of_guests, location):
         #"--no-sandbox",
         #"--disable-dev-shm-usage",
         #'--remote-debugging-port=9222'
-]
+    ]
 
-for option in options:
-    chrome_options.add_argument(option)
-    #chrome_options = Options()
-    #chrome_options.add_argument("--headless=new")
-    #chrome_options = webdriver.ChromeOptions()
-    #chrome_options.add_experimental_option("detach", True)
-    #chromedriver = "chromedriver"
+    for option in options:
+        chrome_options.add_argument(option)
+	    
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(website)
 
