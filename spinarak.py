@@ -114,9 +114,11 @@ def create_booking(day_of_month, num_of_guests, location):
             if "(full)" not in cell.text.lower() and "n/a" not in cell.text.lower():
                 #available_slots.append(cell.text.strip())
                 available = True
-                global magic_cell = cell.text
+                global magic_cell
+                magic_cell = cell.text
         # Test
-        global magic_cell = cell.text # testing
+        global magic_cell
+        magic_cell = cell.text
 
         # scroll down before taking screenshot
         driver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
