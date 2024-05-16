@@ -130,7 +130,7 @@ def create_booking(day_of_month, num_of_guests, location):
             #send_email_notification(available_slots)	
         else:
             print("No available slots found :(")
-            filename = 'pokemon-cafe-no-dice' + str(uuid.uuid4().hex) + '.png'
+            filename = 'nodice/pokemon-cafe-no-dice-' + str(uuid.uuid4().hex) + '.png'
             # Delete previously-stored screenshot if found
             #if os.path.isfile(filename):
             #    print(filename + ' exists, deleting...')
