@@ -113,8 +113,8 @@ def create_booking(day_of_month, num_of_guests, location):
                 #available_slots.append(cell.text.strip())
                 available = True
                 magic_cell = cell.text
-	    else:
-		magic_cell = cell.text # testing
+            else:
+                magic_cell = cell.text # testing
 
         # scroll down before taking screenshot
         driver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
