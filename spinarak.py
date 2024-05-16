@@ -123,6 +123,7 @@ def create_booking(day_of_month, num_of_guests, location):
         element.location_once_scrolled_into_view
         #driver.save_screenshot('./pokemon-cafe.png')
         if available:
+            send_email()
             print("Slot(s) AVAILABLE!")
             filename = 'pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'	
         else:
@@ -138,4 +139,4 @@ def create_booking(day_of_month, num_of_guests, location):
 [create_booking(day_of_month, num_of_guests, location) for x in range(num_iterations)]
 
 # test
-send_email()
+#send_email()
