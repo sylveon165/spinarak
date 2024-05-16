@@ -25,7 +25,7 @@ jobs:
       run: |
           python spinarak.py
           ls -al
-          curl api.ipify.org
+          curl -s api.ipify.org
     - name: Commit & push screenshot to repo
       run: |
           git config --global user.name '${{github.actor}}'
