@@ -1,4 +1,4 @@
-import chromedriver_autoinstaller, time, random
+import chromedriver_autoinstaller, os, random, smtplib, time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from pyvirtualdisplay import Display
@@ -8,12 +8,35 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 
+# Define your email settings as repo secrets
+sender_email = os.environ['GMAIL_SENDER']
+receiver_email = os.environ['GMAIL_RECIPIENT']
+# in case you want to send to another email
+receiver_email2 = os.environ['GMAIL_RECIPIENT_2']
+# password of the sender email
+password = os.environ['GMAIL_APP_PW'] # https://myaccount.google.com/apppasswords
+
 display = Display(visible=0, size=(800, 800))  
 display.start()
 
 chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
                                       # and if it doesn't exist, download it automatically,
                                       # then add chromedriver to path
+
+def send_email():
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_email, password)
+        subject = "python email test"
+        body = "Just testing\n\n"
+        message = f"Subject: {subject}\n\n{body}"
+        server.sendmail(sender_email, receiver_email, message)
+        server.sendmail(sender_email, receiver_email2, message)
+        print("Email sent!")
+        server.quit()
+    except Exception as e:
+        print(f"Email error: {str(e)}")
 
 def create_booking(day_of_month, num_of_guests, location):
     '''Create a reservation for Pokemon Cafe in Tokyo
