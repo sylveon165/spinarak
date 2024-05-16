@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install dependencies
-      run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+      run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay beautifulsoup4
     - name: Run Python Selenium script
       run: |
           python avail-notif.py
