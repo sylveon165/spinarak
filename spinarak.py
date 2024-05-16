@@ -117,7 +117,7 @@ def create_booking(day_of_month, num_of_guests, location):
             #send_email_notification(available_slots)	
         else:
             print("No available slots found :(")
-            driver.save_screenshot('./pokemon-cafe-availability-slot-not-found.png')
+            driver.save_screenshot('./pokemon-cafe-not-slot-found.png')
         driver.quit()
     except NoSuchElementException:
         pass
