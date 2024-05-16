@@ -16,6 +16,12 @@ receiver_email2 = os.environ['GMAIL_RECIPIENT_2']
 # password of the sender email
 password = os.environ['GMAIL_APP_PW'] # https://myaccount.google.com/apppasswords
 
+num_iterations = 1
+day_of_month='28'
+num_of_guests=3
+location = 'Tokyo'
+#location = 'Osaka'
+
 display = Display(visible=0, size=(800, 800))  
 display.start()
 
@@ -116,9 +122,7 @@ def create_booking(day_of_month, num_of_guests, location):
     except NoSuchElementException:
         pass
 
-num_iterations = 1
-day_of_month='28'
-num_of_guests=3
-location = 'Tokyo'
-#location = 'Osaka'
 [create_booking(day_of_month, num_of_guests, location) for x in range(num_iterations)]
+
+# test
+send_email()
