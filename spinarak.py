@@ -1,6 +1,7 @@
 import chromedriver_autoinstaller, os, random, smtplib, time
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from email.mime.text import MIMEText
 from pyvirtualdisplay import Display
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
@@ -34,11 +35,17 @@ def send_email():
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender_email, password)
-        subject = "python email test"
+        subject = "Spinarak bot"
         body = "Just testing\n\n"
-        message = f"Subject: {subject}\n\n{body}"
-        server.sendmail(sender_email, receiver_email, message)
-        server.sendmail(sender_email, receiver_email2, message)
+        #message = f"Subject: {subject}\n\n{body}"
+        message = MIMEText(body)
+	message['Subject'] = subject
+        message['From'] = sender_email
+        message['To'] = receiver_email
+	#server.sendmail(sender_email, receiver_email, message)
+	#server.sendmail(sender_email, receiver_email2, message)
+        server.sendmail(sender_email, [receiver_email], message.as_string())
+	server.sendmail(sender_email, [receiver_email], message.as_string())
         print("Email sent!")
         server.quit()
     except Exception as e:
@@ -112,13 +119,19 @@ def create_booking(day_of_month, num_of_guests, location):
         #driver.save_screenshot('./pokemon-cafe.png')
         if available:
             print("Slot(s) AVAILABLE!")
-            driver.save_screenshot('./pokemon-cafe-slot-found.png')
+            filename = 'pokemon-cafe-slot-found.png'
+            # Delete previously-stored screenshot if found
+            try:
+                os.remove(filename)
+            except OSError:
+                pass	
+            driver.save_screenshot('pokemon-cafe-slot-found.png')
             # TODO: send email & text with screenshot if slots detected
             #send_email_notification(available_slots)	
         else:
             print("No available slots found :(")
             filename = 'pokemon-cafe-no-slot-found.png'
-	    # Delete previously-stored screenshot if found
+            # Delete previously-stored screenshot if found
             try:
                 os.remove(filename)
             except OSError:
