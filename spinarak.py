@@ -39,13 +39,13 @@ def send_email():
         body = "Just testing\n\n"
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
-	message['Subject'] = subject
+        message['Subject'] = subject
         message['From'] = sender_email
         message['To'] = receiver_email
-	#server.sendmail(sender_email, receiver_email, message)
-	#server.sendmail(sender_email, receiver_email2, message)
+        #server.sendmail(sender_email, receiver_email, message)
+        #server.sendmail(sender_email, receiver_email2, message)
         server.sendmail(sender_email, [receiver_email], message.as_string())
-	server.sendmail(sender_email, [receiver_email], message.as_string())
+        server.sendmail(sender_email, [receiver_email2], message.as_string())
         print("Email sent!")
         server.quit()
     except Exception as e:
