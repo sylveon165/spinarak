@@ -122,9 +122,9 @@ def create_booking(day_of_month, num_of_guests, location):
             print("Slot(s) AVAILABLE!")
             filename = 'pokemon-cafe-slot-found.png'
             # Delete previously-stored screenshot if found
-            if os.path.isfile(filename):
-                print(filename + ' exists, deleting...')
-                os.remove(filename)
+            #if os.path.isfile(filename):
+            #    print(filename + ' exists, deleting...')
+            #    os.remove(filename)
             driver.save_screenshot(filename)
             # TODO: send email & text with screenshot if slots detected
             #send_email_notification(available_slots)	
@@ -132,9 +132,9 @@ def create_booking(day_of_month, num_of_guests, location):
             print("No available slots found :(")
             filename = 'pokemon-cafe-no-slot-found.png'
             # Delete previously-stored screenshot if found
-            if os.path.isfile(filename):
-                print(filename + ' exists, deleting...')
-                os.remove(filename)
+            #if os.path.isfile(filename):
+            #    print(filename + ' exists, deleting...')
+            #    os.remove(filename)
             driver.save_screenshot(filename)
             
         driver.quit()
