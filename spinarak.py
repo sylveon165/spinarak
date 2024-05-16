@@ -117,7 +117,13 @@ def create_booking(day_of_month, num_of_guests, location):
             #send_email_notification(available_slots)	
         else:
             print("No available slots found :(")
-            driver.save_screenshot('./pokemon-cafe-not-slot-found.png')
+	    filename = 'pokemon-cafe-no-slot-found.png'
+	    # Delete file if previously stored
+            try:
+                os.remove(filename)
+            except OSError:
+                pass		
+            driver.save_screenshot(filename)
         driver.quit()
     except NoSuchElementException:
         pass
