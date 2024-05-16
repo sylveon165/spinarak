@@ -31,13 +31,13 @@ chromedriver_autoinstaller.install()  # Check if the current version of chromedr
                                       # and if it doesn't exist, download it automatically,
                                       # then add chromedriver to path
 
-def send_email():
+def send_email(magic_cell):
     try:
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender_email, password)
         subject = "Spinarak bot"
-        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n"
+        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + magic_cell + "\n\n"
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
         message['Subject'] = subject
@@ -112,6 +112,9 @@ def create_booking(day_of_month, num_of_guests, location):
             if "(full)" not in cell.text.lower() and "n/a" not in cell.text.lower():
                 #available_slots.append(cell.text.strip())
                 available = True
+                magic_cell = cell.text
+            else
+		magic_cell = cell.text # testing
 
         # scroll down before taking screenshot
         driver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
@@ -146,4 +149,4 @@ def create_booking(day_of_month, num_of_guests, location):
 [create_booking(day_of_month, num_of_guests, location) for x in range(num_iterations)]
 
 # test
-send_email()
+send_email(magic_cell)
