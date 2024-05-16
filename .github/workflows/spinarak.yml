@@ -1,4 +1,4 @@
-name: Availability notification
+name: Spinarak bot
 
 on:
   workflow_dispatch:
