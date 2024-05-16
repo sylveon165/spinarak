@@ -20,7 +20,7 @@ jobs:
         GMAIL_RECIPIENT: ${{ secrets.GMAIL_RECIPIENT }}
         GMAIL_RECIPIENT_2: ${{ secrets.GMAIL_RECIPIENT_2 }}
       run: |
-          python avail-notif.py
+          python spinarak.py
           ls -al
     - name: Commit & push screenshot to repo
       run: |
