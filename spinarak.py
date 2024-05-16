@@ -117,8 +117,8 @@ def create_booking(day_of_month, num_of_guests, location):
             #send_email_notification(available_slots)	
         else:
             print("No available slots found :(")
-	    filename = 'pokemon-cafe-no-slot-found.png'
-	    # Delete file if previously stored
+            filename = 'pokemon-cafe-no-slot-found.png'
+	    # Delete previously-stored screenshot if found
             try:
                 os.remove(filename)
             except OSError:
