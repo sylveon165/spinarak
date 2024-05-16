@@ -13,6 +13,12 @@ jobs:
       uses: actions/checkout@v4
     - name: Install dependencies
       run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay beautifulsoup4
+    - name: Remove previous screenshots
+      run: |
+          git config --global user.name '${{github.actor}}'
+          git config --global user.email '${{github.actor}}@users.noreply.github.com'
+          # Remove previous screenshots. This will force the new one to be pushed to the repo
+          git rm pokemon-cafe-*.png
     - name: Run Python Selenium script
       env:
         GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
@@ -24,8 +30,8 @@ jobs:
           ls -al
     - name: Commit & push screenshot to repo
       run: |
-          git config --global user.name '${{github.actor}}'
-          git config --global user.email '${{github.actor}}@users.noreply.github.com'
+          #git config --global user.name '${{github.actor}}'
+          #git config --global user.email '${{github.actor}}@users.noreply.github.com'
           git add --all
           git commit -am "Screenshot"
           git push
