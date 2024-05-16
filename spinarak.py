@@ -24,6 +24,8 @@ num_of_guests=3
 location = 'Tokyo'
 #location = 'Osaka'
 
+magic_cell = ''
+
 display = Display(visible=0, size=(800, 800))  
 display.start()
 
@@ -31,7 +33,7 @@ chromedriver_autoinstaller.install()  # Check if the current version of chromedr
                                       # and if it doesn't exist, download it automatically,
                                       # then add chromedriver to path
 
-def send_email(magic_cell):
+def send_email():
     try:
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
@@ -112,9 +114,9 @@ def create_booking(day_of_month, num_of_guests, location):
             if "(full)" not in cell.text.lower() and "n/a" not in cell.text.lower():
                 #available_slots.append(cell.text.strip())
                 available = True
-                magic_cell = cell.text
-            else:
-                magic_cell = cell.text # testing
+                global magic_cell = cell.text
+        # Test
+        global magic_cell = cell.text # testing
 
         # scroll down before taking screenshot
         driver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
@@ -149,4 +151,4 @@ def create_booking(day_of_month, num_of_guests, location):
 [create_booking(day_of_month, num_of_guests, location) for x in range(num_iterations)]
 
 # test
-send_email(magic_cell)
+send_email()
