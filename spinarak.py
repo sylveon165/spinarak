@@ -18,7 +18,7 @@ recipients = [os.environ['GMAIL_SENDER'], os.environ['GMAIL_RECIPIENT']]
 # password of the sender email
 password = os.environ['GMAIL_APP_PW'] # https://myaccount.google.com/apppasswords
 
-num_iterations = 1
+num_iterations = 2
 day_of_month='28'
 num_of_guests=3
 location = 'Tokyo'
@@ -38,8 +38,8 @@ def send_email():
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender_email, password)
-        subject = "Spinarak bot"
-        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + magic_cell + "\n\n"
+        subject = "🚨 Spinarak bot: Pokemon Cafe slot found!!"
+        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell + "\n\n"
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
         message['Subject'] = subject
@@ -137,11 +137,6 @@ def create_booking(day_of_month, num_of_guests, location):
         else:
             print("No available slots found :(")
             filename = 'nodice/pokemon-cafe-no-dice-' + str(uuid.uuid4().hex) + '.png'
-            # Delete previously-stored screenshot if found
-            #if os.path.isfile(filename):
-            #    print(filename + ' exists, deleting...')
-            #    os.remove(filename)
-            #driver.save_screenshot(filename)
         
         driver.save_screenshot(filename)
             
