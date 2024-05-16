@@ -14,6 +14,7 @@ sender_email = os.environ['GMAIL_SENDER']
 receiver_email = os.environ['GMAIL_RECIPIENT']
 # in case you want to send to another email
 receiver_email2 = os.environ['GMAIL_RECIPIENT_2']
+recipients = [os.environ['GMAIL_SENDER'], os.environ['GMAIL_RECIPIENT']]
 # password of the sender email
 password = os.environ['GMAIL_APP_PW'] # https://myaccount.google.com/apppasswords
 
@@ -125,7 +126,7 @@ def create_booking(day_of_month, num_of_guests, location):
                 os.remove(filename)
             except OSError:
                 pass	
-        driver.save_screenshot(filename)
+            driver.save_screenshot(filename)
             # TODO: send email & text with screenshot if slots detected
             #send_email_notification(available_slots)	
         else:
