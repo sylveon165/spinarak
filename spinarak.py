@@ -36,7 +36,7 @@ def send_email():
         server.starttls()
         server.login(sender_email, password)
         subject = "Spinarak bot"
-        body = "Just testing\n\n"
+        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n"
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
         message['Subject'] = subject
@@ -125,7 +125,7 @@ def create_booking(day_of_month, num_of_guests, location):
                 os.remove(filename)
             except OSError:
                 pass	
-            driver.save_screenshot('pokemon-cafe-slot-found.png')
+        driver.save_screenshot(filename)
             # TODO: send email & text with screenshot if slots detected
             #send_email_notification(available_slots)	
         else:
@@ -135,8 +135,9 @@ def create_booking(day_of_month, num_of_guests, location):
             try:
                 os.remove(filename)
             except OSError:
-                pass		
+                pass
             driver.save_screenshot(filename)
+            
         driver.quit()
     except NoSuchElementException:
         pass
