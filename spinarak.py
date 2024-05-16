@@ -116,8 +116,6 @@ def create_booking(day_of_month, num_of_guests, location):
                 #available_slots.append(cell.text.strip())
                 available = True
                 magic_cell = cell.text
-        # Test
-        magic_cell = cell.text
 
         # scroll down before taking screenshot
         driver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
@@ -126,14 +124,7 @@ def create_booking(day_of_month, num_of_guests, location):
         #driver.save_screenshot('./pokemon-cafe.png')
         if available:
             print("Slot(s) AVAILABLE!")
-            filename = 'pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'
-            # Delete previously-stored screenshot if found
-            #if os.path.isfile(filename):
-            #    print(filename + ' exists, deleting...')
-            #    os.remove(filename)
-            #driver.save_screenshot(filename)
-            # TODO: send email & text with screenshot if slots detected
-            #send_email_notification(available_slots)	
+            filename = 'pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'	
         else:
             print("No available slots found :(")
             filename = 'nodice/pokemon-cafe-no-dice-' + str(uuid.uuid4().hex) + '.png'
