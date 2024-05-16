@@ -75,23 +75,20 @@ def create_booking(day_of_month, num_of_guests, location):
             if "(full)" not in cell.text.lower() and "n/a" not in cell.text.lower():
                 #available_slots.append(cell.text.strip())
                 available = True
-#
-#        if available_slots:
-#            driver.find_element(By.XPATH, "//*[contains(text(), " + str(day_of_month) + ")]").click()
-#            driver.find_element(By.XPATH, "//*[@class='button']").click()
-        # TODO: send email if slots detected
-#            send_email_notification(available_slots)
+
         # scroll down before taking screenshot
         driver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
         element=driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/p[3]")
         element.location_once_scrolled_into_view
-        driver.save_screenshot('./pokemon-cafe.png')
+        #driver.save_screenshot('./pokemon-cafe.png')
         if available:
             print("Slot(s) AVAILABLE!")
+            driver.save_screenshot('./pokemon-cafe-slot-found.png')
             # TODO: send email & text with screenshot if slots detected
             #send_email_notification(available_slots)	
         else:
             print("No available slots found :(")
+            driver.save_screenshot('./pokemon-cafe-availability-slot-not-found.png')
         driver.quit()
     except NoSuchElementException:
         pass
