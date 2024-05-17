@@ -18,7 +18,7 @@ recipients = [os.environ['GMAIL_SENDER'], os.environ['GMAIL_RECIPIENT']]
 # password of the sender email
 password = os.environ['GMAIL_APP_PW'] # https://myaccount.google.com/apppasswords
 
-num_iterations = 4
+num_iterations = 20
 day_of_month='28'
 num_of_guests=3
 location = 'Tokyo'
@@ -90,6 +90,8 @@ def create_booking(day_of_month, num_of_guests, location):
     driver.get(website)
 
     try:
+        # XPaths is will likely have to be changed if bot breaks due to the site updating
+        # Chrome > Developer Tools > Elements > Inspect Element > Right-click selected HTML > Copy XPath
         driver.find_element(By.XPATH, "//*[@id=\"forms-agree\"]/div/div[1]/label").click()
         driver.find_element(By.XPATH, "//*[@id=\"forms-agree\"]/div/div[2]/button").click()
         time.sleep(random.randint(3, 6))
