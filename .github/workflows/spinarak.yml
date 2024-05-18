@@ -23,7 +23,7 @@ jobs:
         GMAIL_RECIPIENT: ${{ secrets.GMAIL_RECIPIENT }}
         GMAIL_RECIPIENT_2: ${{ secrets.GMAIL_RECIPIENT_2 }}
       run: |
-          curl -s api.ipify.org
+          echo "current NAT'd source IP address: `curl -s api.ipify.org`"
           python spinarak.py
           ls -al     
     - name: Commit & push screenshot to repo
