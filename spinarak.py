@@ -44,7 +44,7 @@ def send_email(avail_slots):
         #body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell
         body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\nAvailable slots:\n\n"
         for day in avail_slots:
-            body += day + ', '
+            body += day + '\n'
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
         message['Subject'] = subject
@@ -131,7 +131,9 @@ def create_booking(day_of_month, num_of_guests, location):
         #driver.save_screenshot('./pokemon-cafe.png')
         if available:
             send_email(available_slots)
-            print("Slot(s) AVAILABLE!" + available_slots)
+            print('Slot(s) AVAILABLE: ')
+            for day in available_slots):
+                print(day + ' ')
             filename = 'hits/pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'	
         else:
             print("No available slots found :(")
