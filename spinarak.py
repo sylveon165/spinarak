@@ -132,7 +132,7 @@ def create_booking(day_of_month, num_of_guests, location):
         if available:
             send_email(available_slots)
             print('Slot(s) AVAILABLE: ')
-            for day in available_slots):
+            for day in available_slots:
                 print(day + ' ')
             filename = 'hits/pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'	
         else:
