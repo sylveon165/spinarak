@@ -38,13 +38,13 @@ def send_email(avail_slots):
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender_email, password)
-	subject = "🚨 Days found by Spinarak bot: "
-	for day in avail_slots:
-		subject += day + ' '
-        #body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell
-	body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\nAvailable slots:\n\n"
+        subject = "🚨 Days found by Spinarak bot: "
         for day in avail_slots:
-		body += day + ', '
+            subject += day + ' '
+        #body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell
+        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\nAvailable slots:\n\n"
+        for day in avail_slots:
+            body += day + ', '
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
         message['Subject'] = subject
