@@ -39,7 +39,7 @@ def send_email(avail_slots):
         server.starttls()
         server.login(sender_email, password)
         subject = "🚨 Spinarak bot: Pokemon Cafe slot found!!"
-        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell + "Available slots:\n\n" + avail_slots + "
+        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell + "Available slots:\n\n" + avail_slots + "\n\n"
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
         message['Subject'] = subject
