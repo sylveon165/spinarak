@@ -33,13 +33,13 @@ chromedriver_autoinstaller.install()  # Check if the current version of chromedr
                                       # and if it doesn't exist, download it automatically,
                                       # then add chromedriver to path
 
-def send_email():
+def send_email(avail_slots):
     try:
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender_email, password)
         subject = "🚨 Spinarak bot: Pokemon Cafe slot found!!"
-        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell + "\n\n"
+        body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell + "Available slots:\n\n" + avail_slots + "
         #message = f"Subject: {subject}\n\n{body}"
         message = MIMEText(body)
         message['Subject'] = subject
@@ -115,7 +115,7 @@ def create_booking(day_of_month, num_of_guests, location):
         global magic_cell
         for cell in calendar_cells:
             if "(full)" not in cell.text.lower() and "n/a" not in cell.text.lower():
-                #available_slots.append(cell.text.strip())
+                available_slots.append(cell.text.strip())
                 available = True
                 magic_cell = cell.text
 
@@ -125,9 +125,9 @@ def create_booking(day_of_month, num_of_guests, location):
         element.location_once_scrolled_into_view
         #driver.save_screenshot('./pokemon-cafe.png')
         if available:
-            send_email()
-            print("Slot(s) AVAILABLE!")
-            filename = 'pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'	
+            send_email(available_slots)
+            print("Slot(s) AVAILABLE!" + available_slots)
+            filename = 'hits/pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'	
         else:
             print("No available slots found :(")
             filename = 'nodice/pokemon-cafe-no-dice-' + str(uuid.uuid4().hex) + '.png'
