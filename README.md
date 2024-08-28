@@ -22,3 +22,7 @@ For fun, Spinarak stores hits and misses under the `/hits/` and `/nodice/` direc
 4. Update the `cron` line on `spinarak.yml` to suit your needs. The more frequent the action runs, the more likely Spinarak will find an open slot
 
 Please note that you may go above your free GitHub Actions minutes which means you'll be billed.
+
+If everything goes well, you'll book your slot and get to meet Pikachu just like we did!
+
+https://github.com/user-attachments/assets/9a6c9203-f0f6-4373-86c2-c1663d391ca9
