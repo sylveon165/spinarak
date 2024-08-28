@@ -25,4 +25,4 @@ Please note that you may go above your free GitHub Actions minutes which means y
 
 If everything goes well, you'll book your slot and get to meet Pikachu just like we did!
 
-https://github.com/user-attachments/assets/d39380d1-b424-4e9b-a961-c7e384eeee39
+https://github.com/user-attachments/assets/8a33b716-2799-4efc-826d-a184892d3b1a
