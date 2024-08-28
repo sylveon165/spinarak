@@ -16,7 +16,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install dependencies
-      run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay beautifulsoup4
+      run: |
+        # font package needed for Japanese to render in captured screenshots
+        sudo apt-get install fonts-noto-cjk
+        pip install chromedriver-autoinstaller selenium pyvirtualdisplay beautifulsoup4
     - name: Run Python Selenium script
       env:
         GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
