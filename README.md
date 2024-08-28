@@ -13,7 +13,7 @@ For fun, Spinarak stores hits and misses under the `/hits/` and `/nodice/` direc
 
 ## How to set Spinarak up
 1. Fork this repo
-2. Create GMail app password
+2. Create [Gmail app password](https://myaccount.google.com/apppasswords)
 3. Store your GMail settings as GitHub Action secrets on your own repo as follows:
   - `GMAIL_APP_PW`
   - `GMAIL_RECIPIENT`
