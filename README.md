@@ -25,4 +25,5 @@ Please note that you may go above your free GitHub Actions minutes which means y
 
 If everything goes well, you'll book your slot and get to meet Pikachu just like we did!
 
-https://github.com/user-attachments/assets/9a6c9203-f0f6-4373-86c2-c1663d391ca9
+
+![Pokemon_Cafe_Tokyo](https://github.com/user-attachments/assets/2369b222-1b38-481e-8e31-d7d6a1a237dc)
