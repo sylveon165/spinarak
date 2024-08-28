@@ -41,7 +41,7 @@ def send_email(avail_slots):
         subject = "🚨 Days found by Spinarak bot: "
         for day in avail_slots:
             subject += day + ' '
-        #body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Magic cell found:\n\n" + magic_cell
+        #body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\n" + "Available day(s) found:\n\n" + magic_cell
         body = "Go check now!\n\nhttps://reserve.pokemon-cafe.jp/reserve/step1\n\nAvailable slots:\n\n"
         for day in avail_slots:
             body += day + '\n'
@@ -95,7 +95,7 @@ def create_booking(day_of_month, num_of_guests, location):
     driver.get(website)
 
     try:
-        # XPaths is will likely have to be changed if bot breaks due to the site updating
+        # XPaths is what will likely have to be changed if this bot breaks due to the Pokemon Cafe site updating the XML responses
         # Chrome > Developer Tools > Elements > Inspect Element > Right-click selected HTML > Copy XPath
         driver.find_element(By.XPATH, "//*[@id=\"forms-agree\"]/div/div[1]/label").click()
         driver.find_element(By.XPATH, "//*[@id=\"forms-agree\"]/div/div[2]/button").click()
