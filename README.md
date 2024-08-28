@@ -24,3 +24,5 @@ For fun, Spinarak stores hits and misses under the `/hits/` and `/nodice/` direc
 Please note that you may go above your free GitHub Actions minutes which means you'll be billed.
 
 If everything goes well, you'll book your slot and get to meet Pikachu just like we did!
+
+https://github.com/user-attachments/assets/d39380d1-b424-4e9b-a961-c7e384eeee39
