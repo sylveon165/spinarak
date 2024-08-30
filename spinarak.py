@@ -1,4 +1,5 @@
 import chromedriver_autoinstaller, os, uuid, random, smtplib, time
+from datetime import date
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from email.mime.text import MIMEText
@@ -131,18 +132,15 @@ def create_booking(day_of_month, num_of_guests, location):
         driver.execute_script('document.getElementsByTagName("html")[0].style.scrollBehavior = "auto"')
         element=driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/p[3]")
         element.location_once_scrolled_into_view
-        #driver.save_screenshot('./pokemon-cafe.png')
         if available:
             print('Slot(s) AVAILABLE: ')
             for day in available_slots:
                 print(day + ' ')
-            filename = 'hits/pokemon-cafe-slot-found-' + str(uuid.uuid4().hex) + '.png'
+            filename = 'hits/pokemon-cafe-slot-found-' + date.today().strftime("%Y%m%d") + '-' + str(uuid.uuid4().hex) + '.png'
             driver.save_screenshot(filename)
             send_email(available_slots, filename)
         else:
             print("No available slots found :(")
-            filename = 'nodice/pokemon-cafe-no-dice-' + str(uuid.uuid4().hex) + '.png'
-            driver.save_screenshot(filename)
 
         driver.quit()
     except NoSuchElementException:
