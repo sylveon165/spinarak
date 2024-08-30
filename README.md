@@ -2,14 +2,13 @@
 
 ## What it'll do:
 1. Regularly check for days with open reservation slots within the next month
-2. If a day with availability is found, an email is sent to you with the booking link
+2. If a day with availability is found, an email is sent to you with the booking link and a screenshot showing the available slot(s) found
 
 You still have to manually complete the last step in the booking process. For this reason, I highly recommend having push notifcations enabled on your phone email app. This way you can click the reservation link that gets automatically emailed to you ASAP.
 
 Spinarak uses Selenium WebDriver to get around the Pokemon Cafe's site anti-automation controls. You won't be able to easily parse the server responses using curl or similar.
 
-For fun, Spinarak stores hits and misses under the `/hits/` and `/nodice/` directories of the repo.
-
+For fun, Spinarak stores hits under the `/hits/` directory of the repo.
 
 ## How to set Spinarak up
 1. Fork this repo
