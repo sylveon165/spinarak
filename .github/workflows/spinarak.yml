@@ -15,11 +15,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      
     - name: Install dependencies
       run: |
         # font package needed for Japanese to render in captured screenshots
         sudo apt-get install fonts-noto-cjk
         pip install chromedriver-autoinstaller selenium pyvirtualdisplay beautifulsoup4
+        
     - name: Run Python Selenium script
       env:
         GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
@@ -29,8 +31,15 @@ jobs:
       run: |
           echo -e "current NAT'd source IP address: `curl -s api.ipify.org`\n\n"
           python spinarak.py
-          ls -al     
+          ls -al
+          
+    - name: Check if there are any changes
+      id: verify_diff
+      run: |
+          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
+          
     - name: Commit & push screenshot to repo
+      if: steps.verify_diff.outputs.changed == 'true'
       run: |
           git config --global user.name '${{github.actor}}'
           git config --global user.email '${{github.actor}}@users.noreply.github.com'
