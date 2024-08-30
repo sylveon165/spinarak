@@ -2,7 +2,7 @@ name: Spinarak bot
 
 on:
   schedule:
-    - cron: '38 * * * *'
+    - cron: '*/5 * * * *'
   push:
     branches: [ 'main' ] 
   workflow_dispatch:
