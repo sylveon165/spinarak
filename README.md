@@ -8,7 +8,7 @@ You still have to manually complete the last step in the booking process. For th
 
 Spinarak uses Selenium WebDriver to get around the Pokemon Cafe's site anti-automation controls. You won't be able to easily parse the server responses using curl or similar.
 
-For fun, Spinarak stores hits under the `/hits/` directory of the repo.
+For fun, Spinarak stores screenshots of hits under the `/hits/` directory of the repo.
 
 ## How to set Spinarak up
 1. Fork this repo
